@@ -2,68 +2,75 @@
 <html lang=""en">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>YNQ - Blend Details</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         
         <header>
             <div class="logo">YNQ</div>
             <nav>
-                <a href="#">Home</a>
-                <a href="#">Products</a>
-                <a href="#">Create</a>
-                <a href="#">Account</a>
+                <a href="home.html">Home</a>
+                <a href="list.html">Products</a>
+                <a href="create-ingredients.html">Create</a>
+                <a href="account.html">Account</a>
             </nav>
         </header>
 
         <main>
-            <div id="item-path">
+            <nav id="item-path" aria-label="Breadcrumb">
                 <span>
-                    <a href="#">Home </a>
-                    <a href="#">/ Popular Blends </a>
-                    <a href="#">/ Item Title </a>
+                    <a href="home.html">Home </a>
+                    <a href="list.html">/ Popular Blends </a>
+                    <a href="info.html">/ Item Title </a>
                 </span>
-            </div>
+            </nav>
 
-            <div id="blend-detail-cover-img">
-                <img src="" alt="blend cover image">
-            </div>
-
-            <div id="details">
-                <div id="author-info">
-                    <img src="" alt="profile picture">
-                    <p id="username">Username</p>
+            <div class="detail-layout">
+                <div id="blend-detail-cover-img">
+                    <img src="img/blend-cover-1.jpg" alt="cover art for funky fuel blend">
                 </div>
 
-                <button class="x" onclick="">x</button>
+                <div id="details">
+                    <div id="author-info">
+                        <img src="img/avatar-1.jpg" alt="profile picture">
+                        <p id="username">funkopop_fighter</p>
+                    </div>
 
-                <h1 id="blend-title">Blend Title</h1>
+                    <button class="x" type="button" aria-label="close">x</button>
 
-                <div id="ingredients">
-                    <p><strong>ingredients:</strong></p>
-                    <p>one, two, three, four, five, six, seven</p>
-                </div>
+                    <h1 id="blend-title">Funky Fuel</h1>
 
-                <div id="nutrition">
-                    <p><strong>nutrition info:</strong></p>
-                    <ul>
-                        <li>calories: xx</li>
-                        <li>caffeine: xx</li>
-                        <li>carbs: xx</li>
-                        <li>protein: xx</li>
-                    </ul>
-                </div>
-            </div> <!-- close blend-details -->
+                    <div id="ingredients">
+                        <p><strong>Ingredients:</strong></p>
+                        <p>Caffeine, creatine, beta-alanine, L-citrulline, L-theanine, taurine, vitamin B6</p>
+                    </div>
+
+                    <div id="nutrition">
+                        <p><strong>Nutrition info:</strong></p>
+                        <ul>
+                            <li>Calories: <span>10</span></li>
+                            <li>Caffeine: <span>200 mg</span></li>
+                            <li>Carbs: <span>2 g</span></li>
+                            <li>Protein: <span>0 g</span></li>
+                        </ul>
+                    </div>
+                </div> <!-- close blend-details -->
+            </div> <!-- close detail-layout -->
 
             <div id="actions">
-                <button class="like-button" onclick="">Like</button>
-                <button class="comment-button" onclick="">Comment</button>
-                <button class="more-button" onclick="">More</button>
+                <button class="like-button" type="button">Like</button>
+                <button class="comment-button" type="button">Comment</button>
+                <button class="more-button" type="button" aria-label="More options">...</button>
             </div>
 
             <div id="comment-section">
                 <h2>Add a comment:</h2>
-                <input type="text" name="comment" placeholder="Type Here..."
+                <label class="visually-hidden" for="comment">Add a comment</label>
+                <input type="text" id="comment" name="comment" placeholder="Type Here...">
             </div>
         </main>
         

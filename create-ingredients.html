@@ -2,25 +2,30 @@
 <html lang=""en">
     <head>
         <meta charset="utf-8">
-        <title>YNQ </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>YNQ - Create a Blend</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         
         <header>
             <div class="logo">YNQ</div>
             <nav>
-                <a href="#">Home</a>
-                <a href="#">Products</a>
-                <a href="#">Create</a>
-                <a href="#">Account</a>
+                <a href="home.html">Home</a>
+                <a href="list.html">Products</a>
+                <a href="create-ingredients.html" aria-current="page">Create</a>
+                <a href="account.html">Account</a>
             </nav>
         </header>
 
         <main>
-            <div id="status-bar">
-                <a href="#">1. Ingredients </a>
-                <a href="#">/ 2. Products </a>
-                <a href="#">/ 3. Review </a>
+            <div id="status-bar" aria-label="Create a blend progress">
+                <a href="create-ingredients.html" aria-current="page">1. Ingredients </a>
+                <a href="create-products.html">/ 2. Products </a>
+                <a href="create-review.html">/ 3. Review </a>
             </div>
 
             <div class="create-blend-title">
@@ -28,52 +33,47 @@
                 <p>Pick what goes in your blend. You'll choose products next.</p>
             </div>
 
-            <div class="ingredient-grid">
-                <div class="card">
-                    <!-- insert vector icon -->
-                     <h3>Ingredient Title</h3>
-                     <p>ingredient description</p>
+            <div class="create-layout">
+                <div class="ingredient-grid">
+                    <div class="card">
+                        <h3>Creatine</h3>
+                        <p>Strength and power</p>
+                    </div>
+                    <div class="card">
+                        <h3>Caffeine</h3>
+                        <p>Energy and mental focus</p>
+                    </div>
+                    <div class="card">
+                        <h3>Beta-Alanine</h3>
+                        <p>Endurance</p>
+                    </div>
+                    <div class="card">
+                        <h3>L-Citrulline</h3>
+                        <p>Pump and endurance</p>
+                    </div>
+                    <div class="card">
+                        <h3>L-Theanine</h3>
+                        <p>Focused energy</p>
+                    </div>
+                    <div class="card">
+                        <h3>Taurine</h3>
+                        <p>Hydration and muscle function</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <!-- insert vector icon -->
-                     <h3>Ingredient Title</h3>
-                     <p>ingredient description</p>
-                </div>
-                <div class="card">
-                    <!-- insert vector icon -->
-                     <h3>Ingredient Title</h3>
-                     <p>ingredient description</p>
-                </div>
-                <div class="card">
-                    <!-- insert vector icon -->
-                     <h3>Ingredient Title</h3>
-                     <p>ingredient description</p>
-                </div>
-                <div class="card">
-                    <!-- insert vector icon -->
-                     <h3>Ingredient Title</h3>
-                     <p>ingredient description</p>
-                </div>
-                <div class="card">
-                    <!-- insert vector icon -->
-                     <h3>Ingredient Title</h3>
-                     <p>ingredient description</p>
-                </div>
-            </div>
 
-            <div class="summary">
-                <h2>Your Blend</h2>
-                <div id="ingredients">
+                <aside class="summary" aria-label="Your blend so far">
+                    <h2>Your blend</h2>
                     <ul class="selected-ingredients">
-                        <li>no ingredients yet</li>
+                        <li>Caffeine</li>
+                        <li>Creatine</li>
+                        <li>Beta-Alanine</li>
                     </ul>
-                </div>
-                <p>Caffeine 0mg</p>
-                <p>Products chosen 0 of 0</p>
-                <p>Total price $0.00</p>
-            </div>
-
-            <button class="submit" onclick="">Continue</button>
+                    <p><span>Caffeine</span> <span>200 mg</span></p>
+                    <p><span>Products chosen</span> <span>0 of 2</span></p>
+                    <p><span>Total price</span> <span>$0.00</span></p>
+                    <a class="submit" href="create-products.html">Continue</a>
+                </aside>
+            </div> <!-- close create-layout -->
             
         </main>
         

@@ -1,88 +1,94 @@
 <!DOCTYPE html>
-<html lang=""en">
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>YNQ </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>YNQ - Create a Blend</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        
+
         <header>
             <div class="logo">YNQ</div>
             <nav>
-                <a href="#">Home</a>
-                <a href="#">Products</a>
-                <a href="#">Create</a>
-                <a href="#">Account</a>
+                <a href="home.html">Home</a>
+                <a href="list.html">Products</a>
+                <a href="create-ingredients.html" aria-current="page">Create</a>
+                <a href="account.html">Account</a>
             </nav>
         </header>
 
         <main>
-            <div id="status-bar">
-                <a href="#">1. Ingredients </a>
-                <a href="#">/ 2. Products </a>
-                <a href="#">/ 3. Review </a>
-            </div>
+            <nav id="status-bar" aria-label="Create a blend progress">
+                <a href="create-ingredients.html">1. Ingredients </a>
+                <a href="create-products.html" aria-current="step">/ 2. Products </a>
+                <a href="create-review.html">/ 3. Review </a>
+            </nav>
 
             <div class="create-blend-title">
-                <h1>Choose Products</h1>
+                <h1>Choose products</h1>
                 <p>Compare products across the market. Select only one per ingredient.</p>
             </div>
 
-            <div class="product-tabs">
-                <button class="tab-active" onclick="">Creatine</button>
-                <button class="tab" onclick="">Caffeine</button>
-                <button class="tab" onclick="">Beta-Alanine</button>
-            </div>
+            <div class="create-layout">
+                <div>
+                    <div class="product-tabs" role="tablist" aria-label="Ingredient categories">
+                        <button class="tab-active" type="button" role="tab" aria-selected="true">Creatine</button>
+                        <button class="tab" type="button" role="tab" aria-selected="false">Caffeine</button>
+                        <button class="tab" type="button" role="tab" aria-selected="false">Beta-Alanine</button>
+                    </div>
 
-            <div class="product-grid">
-                <div class="card">
-                    <!-- image from https://amoretti.com/products/caffeine-extract-powder-ws?variant=6348426018848 -->
-                    <img src="img/products/caffeine1.jpg" alt="product image">
-                    <div class="card-content">
-                        <h3>Caffeine</h3>
-                        <p>Amoretti</p>
-                        <p>$47.40</p>
-                        <button class="add" onclick="">Add</button>
+                    <div class="product-grid">
+                        <div class="card">
+                            <!-- image from https://amoretti.com/products/caffeine-extract-powder-ws?variant=6348426018848 -->
+                            <img src="img/products/caffeine1.jpg" alt="Amoretti caffeine extract powder tub">
+                            <div class="card-content">
+                                <h3>Caffeine</h3>
+                                <p>Amoretti</p>
+                                <p>$47.40</p>
+                                <button class="add" type="button">Add</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <!-- image from https://shopbvv.com/products/caffeine-powder-anhydrous-->
+                            <img src="img/products/caffeine2.jpg" alt="Bulk Vitamins and Vitamins caffeine anhydrous powder bag">
+                            <div class="card-content">
+                                <h3>Caffeine</h3>
+                                <p>BVV</p>
+                                <p>$20.00</p>
+                                <button class="add" type="button">Add</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <!-- image from https://www.amazon.com/Nutricost-Caffeine-Capsules-200mg-Capsule/dp/B01DFQSVK6 -->
+                            <img src="img/products/caffeine3.jpg" alt="Nutricost caffeine 200 mg capsule bottle">
+                            <div class="card-content">
+                                <h3>Caffeine</h3>
+                                <p>Nutricost</p>
+                                <p>$18.95</p>
+                                <button class="add" type="button">Add</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card">
-                    <!-- image from https://shopbvv.com/products/caffeine-powder-anhydrous-->
-                    <img src="img/products/caffeine2.jpg" alt="product image">
-                    <div class="card-content">
-                        <h3>Caffeine</h3>
-                        <p>Brand Name</p>
-                        <p>$20.00</p>
-                        <button class="add" onclick="">Add</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <!-- image from https://www.amazon.com/Nutricost-Caffeine-Capsules-200mg-Capsule/dp/B01DFQSVK6/ref=sr_1_2_sspa?dib=eyJ2IjoiMSJ9.z3lVWnE13z239TD6-LvtLJlJEvbC21qVDMdwoYq6VdDO8h130AP2A9ePGLA3QGXTcioV2KNuqDfCV2ToImA0DqFP3Ej9MaeCt0rFvYVD92BVpJfFE_br-ohvEnY4pb10GNVipiVYoWXxhopSr21EzcOYtWcKiJh-VWXeGBsFA3--b0ZWmo2b19BWY-K0c2htBipJ0uaMUIAren1bnTdWECNhtv1gyagAynVB_Q9P7cOZR_TOYVhh2c-Z9Jl4Hv71uz2ReO395Ib3rpOpE-2GZdYyrsQpaWlfY-CCIPmdqfk.aJ_7VEHHuBI1wUQpxbEJpjUCLdkr5ouCMPqmR863wA8&dib_tag=se&keywords=pure%2Bcaffeine%2Bpowder&qid=1790464911&sr=8-2-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1-->
-                    <img src="img/products/caffeine3.jpg" alt="product image">
-                    <div class="card-content">
-                        <h3>Caffeine</h3>
-                        <p>Nutricost</p>
-                        <p>$18.95</p>
-                        <button class="add" onclick="">Add</button>
-                    </div>
-                </div>
-            </div>
 
-            <div class="summary">
-                <h2>Your Blend</h2>
-                <div id="ingredients">
+                <aside class="summary" aria-label="Your blend so far">
+                    <h2>Your blend</h2>
                     <ul class="selected-ingredients">
-                        <li>no ingredients yet</li>
+                        <li>Caffeine</li>
+                        <li>Creatine</li>
                     </ul>
-                </div>
-                <p>Caffeine 0mg</p>
-                <p>Products chosen 0 of 0</p>
-                <p>Total price $0.00</p>
+                    <p><span>Caffeine</span> <span>200 mg</span></p>
+                    <p><span>Products chosen</span> <span>1 of 2</span></p>
+                    <p><span>Total price</span> <span>$18.95</span></p>
+                    <a class="submit" href="create-review.html">Continue</a>
+                </aside>
             </div>
 
-            <button class="submit" onclick="">Continue</button>
-            
         </main>
-        
+
         <footer>
             <div class="socials">
                 <a href="#" aria-label="LinkedIn">in</a>
@@ -98,6 +104,5 @@
                 © 2026 YNQ Pre-Workout. All rights reserved.
             </div>
         </footer>
-
     </body>
 </html>

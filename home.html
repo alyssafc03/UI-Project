@@ -1,49 +1,63 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>YNQ Pre-Workout</title>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
 
-        <div id="header">
-            <img src="" alt="Logo">
+        <header>
+            <div class="logo">YNQ</div>
+            <nav>
+                <a href="home.html" aria-current="page">Home</a>
+                <a href="list.html">Products</a>
+                <a href="create-ingredients.html">Create</a>
+                <a href="#">Account</a>
+            </nav>
+        </header>
 
-            <div id="nav-bar">
-                <p>Home</p>
-                <p>Products</p>
-                <p>Create</p>
-                <p>Account</p>
+        <main>
+            <section class="hero">
+                <div class="hero-copy">
+                    <h1>YNQ Pre-Workout</h1>
+                    <p class="subhead">Create your custom pre-workout supplement blend</p>
+
+                    <p>Ready to take control of your pre-workout?</p>
+                    <a class="text-link" id="sign-up-link" href="#">Sign Up</a>
+
+                    <div class="account-links">
+                        <p>Already have an account?</p>
+                        <a class="text-link" id="log-in-link" href="#">Log In</a>
+                    </div>
+                </div>
+
+                <div class="hero-image" role="img" aria-label="Preview of a custom pre-workout blend"></div>
+            </section>
+
+            <div class="cta-bar">
+                <button type="button">Start creating</button>
             </div>
-        </div>
+        </main>
 
-        <div id="content">
-            <h1>YNQ Pre-Workout</h1>
-            <h2>Create your custom pre-workout supplement blend</h2>
-            <p>Ready to take control of your pre-workout?</p>
-            <a id="sign-up-link" href="">Sign Up</a>
-            <br>
-            <p>Already have an account?</p>
-            <a id="log-in-link" href="">Log In</a>
-        
-            <div id="cta">
-                <h3>START CREATING</h3>
-            </div>
-        
-        </div> <!-- close content -->
-
-        <div id="footer">
-            <div id="socials">
-                <img src="" alt="linked-in">
-                <img src="" alt="facebook">
-                <img src="" alt="twitter">
+        <footer>
+            <div class="socials">
+                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Twitter">x</a>
             </div>
 
-            <div id="footer-body">
-                <p>A product of YNQ</p>
+            <div>
+                A product of YNQ
             </div>
 
-            <div id="copyright">
-                <p>@ 2026 YNQ Pre-Workout. All rights reserved</p>
-            </div> 
-        </div> <!-- close footer -->
+            <div>
+                © 2026 YNQ Pre-Workout. All rights reserved.
+            </div>
+        </footer>
     </body>
 </html>

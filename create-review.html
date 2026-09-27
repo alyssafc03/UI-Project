@@ -1,65 +1,79 @@
 <!DOCTYPE html>
-<html lang=""en">
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>YNQ </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>YNQ - Create a Blend</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        
+
         <header>
             <div class="logo">YNQ</div>
             <nav>
-                <a href="#">Home</a>
-                <a href="#">Products</a>
-                <a href="#">Create</a>
-                <a href="#">Account</a>
+                <a href="home.html">Home</a>
+                <a href="list.html">Products</a>
+                <a href="create-ingredients.html" aria-current="page">Create</a>
+                <a href="account.html">Account</a>
             </nav>
         </header>
 
         <main>
-            <div id="status-bar">
-                <a href="#">1. Ingredients </a>
-                <a href="#">/ 2. Products </a>
-                <a href="#">/ 3. Review </a>
-            </div>
+            <nav id="status-bar" aria-label="Create a blend progress">
+                <a href="create-ingredients.html">1. Ingredients </a>
+                <a href="create-products.html">/ 2. Products </a>
+                <a href="create-review.html" aria-current="step">/ 3. Review </a>
+            </nav>
 
             <div class="create-blend-title">
                 <h1>Review</h1>
                 <p>Final steps. Name your blend, choose your flavor, and make final changes.</p>
             </div>
 
-            <div class="form-text">
-                <label for="blend-name">Name your blend</label>
-                <input type="text" id="blend-name" name="blend-name" placeholder="Tuesday Tricep Tranquilizer">
-            </div>
-             <div class="form-text">
-                <label for="blend-flavor">Choose your flavor</label>
-                <input type="dropdown" id="blend-flavor" name="blend-flavor" placeholder="select">
-            </div>
-            <div class="form-text">
-                <label for="blend-cover">Choose your cover image</label>
-                <input type="dropdown" id="blend-cover" name="blend-cover" placeholder="select">
-            </div>
+            <div class="create-layout">
+                <form>
+                    <div class="form-text">
+                        <label for="blend-name">Name your blend</label>
+                        <input type="text" id="blend-name" name="blend-name" placeholder="Tuesday Tricep Tranquilizer">
+                    </div>
+                    <div class="form-text">
+                        <label for="blend-flavor">Choose your flavor</label>
+                        <select id="blend-flavor" name="blend-flavor">
+                            <option value="">Select</option>
+                            <option value="fruit-punch">Fruit punch</option>
+                            <option value="blue-raspberry">Blue raspberry</option>
+                            <option value="unflavored">Unflavored</option>
+                        </select>
+                    </div>
+                    <div class="form-text">
+                        <label for="blend-cover">Choose your cover image</label>
+                        <select id="blend-cover" name="blend-cover">
+                            <option value="">Select</option>
+                            <option value="cover-1">Cover 1</option>
+                            <option value="cover-2">Cover 2</option>
+                            <option value="upload">Upload my own</option>
+                        </select>
+                    </div>
+                </form>
 
-
-            <div class="summary">
-                <h2>Your Blend</h2>
-                <div id="ingredients">
+                <aside class="summary" aria-label="Your blend so far">
+                    <h2>Your blend</h2>
                     <ul class="selected-ingredients">
                         <li>Caffeine</li>
                         <li>Creatine</li>
                         <li>Beta-Alanine</li>
                     </ul>
-                </div>
-                <p>Caffeine 0mg</p>
-                <p>Products chosen 0 of 0</p>
-                <p>Total price $0.00</p>
+                    <p><span>Caffeine</span> <span>200 mg</span></p>
+                    <p><span>Products chosen</span> <span>3 of 3</span></p>
+                    <p><span>Total price</span> <span>$54.10</span></p>
+                    <a class="submit" href="list.html">Continue</a>
+                </aside>
             </div>
 
-            <button class="submit" onclick="">Continue</button>
-            
         </main>
-        
+
         <footer>
             <div class="socials">
                 <a href="#" aria-label="LinkedIn">in</a>
@@ -75,6 +89,5 @@
                 © 2026 YNQ Pre-Workout. All rights reserved.
             </div>
         </footer>
-
     </body>
 </html>
