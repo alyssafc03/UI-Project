@@ -77,11 +77,11 @@ ul {
 
 header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-wrap: nowrap;
     padding: 1.5rem 3rem;
-    gap: 1rem;
+    gap: 2rem;
     border-bottom: 1px solid var(--border);
 }
 
@@ -90,12 +90,14 @@ header .logo {
     font-weight: 700;
     font-size: 1.25rem;
     letter-spacing: 0.02em;
+    margin-right: auto;
 }
 
 header nav {
     display: flex;
+    align-items: center;
     gap: 1rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 header nav a {
@@ -116,6 +118,42 @@ header nav a[aria-current="page"] {
     color: var(--ink);
     font-weight: 600;
     border-bottom-color: var(--accent);
+}
+
+.site-search {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex: 0 0 auto;
+    width: 20rem;
+    max-width: 100%;
+    margin-left: 1rem;
+}
+
+.site-search input {
+    min-width: 0;
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.55rem 0.7rem;
+    font: inherit;
+    font-size: 0.85rem;
+}
+
+.site-search button {
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.8rem;
+  background: var(--ink);
+  color: var(--bg);
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.site-search button:hover,
+.site-search button:focus-visible {
+  background: var(--accent);
+  color: var(--accent-ink);
 }
 
 footer {
