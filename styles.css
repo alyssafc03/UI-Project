@@ -648,6 +648,8 @@ a.submit:focus-visible {
   }
 
   .hero-image {
+    
+    display: none;
     order: -1;
     aspect-ratio: 16 / 9;
   }
