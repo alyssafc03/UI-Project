@@ -723,3 +723,9 @@ a.submit:focus-visible {
     text-align: center;
   }
 }
+
+/* The hidden attribute must beat display rules like .blend-grid { display: grid }
+   so that JS can hide/show things with .prop('hidden', ...). */
+[hidden] {
+  display: none !important;
+}

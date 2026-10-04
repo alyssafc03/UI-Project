@@ -16,7 +16,7 @@ $(function () {
         $('.search-term').text(submittedText);
 
         // keep typed phrase in header search input
-        $('.search-form input[name="q"]').val(submittedText);
+        $('.site-search input[name="q"]').val(submittedText);
 
         // if the user typed the search phrase, show results
         if (submittedPhrase === SEARCH_KEYPHRASE) {
