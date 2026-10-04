@@ -121,12 +121,120 @@ $(function () {
         });
     }
 
-
-    // <><><> login/sign-up <><><>
-    // open modal
-    // close modal
-    // submit modal form
-
     // <><><> product selection blend summary info updates <><><>
 
+
+    // <><><> login/sign-up <><><>
+    /* AI used to help generate the below section of code */
+
+    var $loginLink = $('#log-in-link');
+
+    // open the login window when Log In is clicked
+    $loginLink.on('click', function(event) {
+        event.preventDefault();
+
+        // create the login modal
+        var $modal = $('<div class="modal-overlay" id="login-overlay">');
+        var $dialog = $('<div class="modal">');
+
+        var $closeButton = $('<button class="x modal-close">')
+            .attr('type', 'button')
+            .text('x');
+
+        var $title = $('<h2>').text('Log in');
+
+        var $form = $('<form class="login-form">');
+
+        // username
+        var $username = $('<div class="form-text">').append(
+            $('<label>').attr('for', 'login-username').text('Username'),
+            $('<input>').attr({
+                id: 'login-username',
+                type: 'text'
+            })
+        );
+        // password
+        var $password = $('<div class="form-text">').append(
+            $('<label>').attr('for', 'login-password').text('Password'),
+            $('<input>').attr({
+                id: 'login-password',
+                type: 'password'
+            })
+        );
+        // login button
+        var $submit = $('<button class="submit">')
+            .attr('type', 'submit')
+            .text('Log in');
+
+        // put everything together
+        $form.append($username, $password, $submit);
+        $dialog.append($closeButton, $title, $form);
+        $modal.append($dialog);
+
+        // add modal to page
+        $('body').append($modal);
+
+        // close modal when X is clicked
+        $('.modal-close').on('click', function() {
+            $('#login-overlay').remove();
+        });
+
+        // close modal when dark background is clicked
+        $modal.on('click', function(event) {
+            if (event.target === this) {
+                $modal.remove();
+            }
+        });
+
+
+        // check the login form
+        $form.on('submit', function(event) {
+            event.preventDefault();
+
+            var username = $('#login-username').val();
+            var password = $('#login-password').val();
+
+            // remove old error messages
+            $('.field-error').remove();
+
+            // check username
+            if (username === '') {
+                $('#login-username').after(
+                    $('<p class="field-error">').text('Please enter a username.')
+                );
+                return;
+            }
+            // check password
+            if (password === '') {
+                $('#login-password').after(
+                    $('<p class="field-error">').text('Please enter a password.')
+                );
+                return;
+            }
+
+            // password needs at least 6 characters
+            if (password.length < 6) {
+                $('#login-password').after(
+                    $('<p class="field-error">')
+                        .text('Password must be at least 6 characters.')
+                );
+                return;
+            }
+
+            // login was successful
+            $form.replaceWith(
+                $('<div class="login-success">').append(
+                    $('<p>').text('Welcome back, ' + username + '!'),
+                    $('<button class="submit modal-close">')
+                        .attr('type', 'button')
+                        .text('Done')
+                )
+            );
+
+            // close the modal when Done is clicked
+            $('.modal-close').on('click', function() {
+                $('#login-overlay').remove();
+            });
+        });
+    });
 })
