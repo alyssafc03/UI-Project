@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang=""en">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,8 +29,22 @@
         <main>
             
             <h1 class="page-title">Popular Blends</h1>
+
+            <!-- js message shown when page is opened from the search box -->
+            <p id="search-summary" class="search-summary" hidden>
+                Showing blends with "<span class="search-term"></span>".
+                <a class="card-link" href="list.html">Show all blends</a>
+            </p>
+
+            <!-- js message shown when no results are found -->
+            <section id="search-none" hidden>
+                <h2>No blends match "<span class="search-term"></span>"</h2>
+                <p>Sorry, we couldn't find anything that matches. Check your spelling or try a different word, like "caffeine".</p>
+                <a class="card-link" href="list.html">Show all blends</a>
+            </section>
+
             <div class="blend-grid">
-                <div class="card">
+                <div class="card" data-ingredients="caffeine, creatine, beta-alanine, l-citrulline, l-theanine, taurine, vitamin b6">
                     <a href="details.html">
                         <!-- image from https://www.saatchiart.com/en-ch/art/Painting-260-Vibrant-psychedelic-colorful-composition/1081581/9256873/view -->
                         <img class="card-img" src="img/blend-cover-1.jpg" alt="blend cover">
@@ -38,7 +52,7 @@
                     </a>
                     <a href="#" class="card-author">funkopop_fighter</a>
                 </div>
-                <div class="card">
+                <div class="card" data-ingredients="caffeine, creatine, taurine">
                     <a href="details.html">
                         <!-- image from https://www.saatchiart.com/en-ch/art/Painting-124-Chunky/1081581/8705627/view -->
                         <img class="card-img" src="img/blend-cover-2.jpg" alt="blend cover">
@@ -46,7 +60,7 @@
                     </a>
                     <a href="#" class="card-author">leanbeefpatty</a>
                 </div>
-                <div class="card">
+                <div class="card" data-ingredients="creatine, beta-alanine">
                     <a href="details.html">
                         <!-- image from https://aesthetics.fandom.com/wiki/Tropicalcore-->
                         <img class="card-img" src="img/blend-cover-3.jpg" alt="blend cover">
@@ -54,7 +68,7 @@
                     </a>
                     <a href="#" class="card-author">g_deutch</a>
                 </div>
-                <div class="card">
+                <div class="card" data-ingredients="caffeine, taurine, l-citrulline, l-theanine">
                     <a href="details.html">
                         <!-- image from https://www.reddit.com/r/phonk/comments/12wl542/why_is_this_style_of_cover_art_so_popular_among/ -->
                         <img class="card-img" src="img/blend-cover-4.jpg" alt="blend cover">
@@ -62,7 +76,7 @@
                     </a>
                     <a href="#" class="card-author">aquena</a>
                 </div>
-                <div class="card">
+                <div class="card" data-ingredients="caffeine, taurine, l-citrulline, l-theanine">
                     <a href="details.html">
                         <!-- image from https://www.reddit.com/r/phonk/comments/12wl542/why_is_this_style_of_cover_art_so_popular_among/ -->
                         <img class="card-img" src="img/blend-cover-5.jpg" alt="blend cover">
@@ -70,7 +84,7 @@
                     </a>
                     <a href="#" class="card-author">gym.monger</a>
                 </div>
-                <div class="card">
+                <div class="card" data-ingredients="caffeine, taurine, l-citrulline, l-theanine">
                     <a href="details.html">
                         <!-- image from https://www.reddit.com/r/phonk/comments/12wl542/why_is_this_style_of_cover_art_so_popular_among/ -->
                         <img class="card-img" src="img/blend-cover-6.jpg" alt="blend cover">
