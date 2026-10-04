@@ -237,4 +237,139 @@ $(function () {
             });
         });
     });
+    // sign up modal
+
+    var $signUpLink = $('#sign-up-link');
+
+    // Open the sign-up window when Sign Up is clicked
+    $signUpLink.on('click', function(event) {
+        event.preventDefault();
+
+        // Create the modal
+        var $modal = $('<div class="modal-overlay" id="signup-overlay">');
+        var $dialog = $('<div class="modal">');
+
+        var $closeButton = $('<button class="x modal-close">')
+            .attr('type', 'button')
+            .text('x');
+
+        var $title = $('<h2>').text('Create an Account');
+
+        var $form = $('<form class="signup-form">');
+
+        // Username
+        var $username = $('<div class="form-text">').append(
+            $('<label>').attr('for', 'signup-username').text('Username'),
+            $('<input>').attr({
+                id: 'signup-username',
+                type: 'text'
+            })
+        );
+
+        // Email
+        var $email = $('<div class="form-text">').append(
+            $('<label>').attr('for', 'signup-email').text('Email'),
+            $('<input>').attr({
+                id: 'signup-email',
+                type: 'email'
+            })
+        );
+
+        // Password
+        var $password = $('<div class="form-text">').append(
+            $('<label>').attr('for', 'signup-password').text('Password'),
+            $('<input>').attr({
+                id: 'signup-password',
+                type: 'password'
+            })
+        );
+
+        // Sign-up button
+        var $submit = $('<button class="submit">')
+            .attr('type', 'submit')
+            .text('Sign Up');
+
+        // Put the form together
+        $form.append($username, $email, $password, $submit);
+        $dialog.append($closeButton, $title, $form);
+        $modal.append($dialog);
+
+        // Add modal to the page
+        $('body').append($modal);
+
+
+        // Close the modal when X is clicked
+        $('.modal-close').on('click', function() {
+            $('#signup-overlay').remove();
+        });
+
+
+        // Close when clicking outside the modal
+        $modal.on('click', function(event) {
+            if (event.target === this) {
+                $modal.remove();
+            }
+        });
+
+
+        // Check the sign-up form
+        $form.on('submit', function(event) {
+            event.preventDefault();
+
+            var username = $('#signup-username').val();
+            var email = $('#signup-email').val();
+            var password = $('#signup-password').val();
+
+            // Remove old error messages
+            $('.field-error').remove();
+
+            // Check username
+            if (username === '') {
+                $('#signup-username').after(
+                    $('<p class="field-error">').text('Please enter a username.')
+                );
+                return;
+            }
+
+            // Check email
+            if (email === '') {
+                $('#signup-email').after(
+                    $('<p class="field-error">').text('Please enter an email.')
+                );
+                return;
+            }
+
+            // Check password
+            if (password === '') {
+                $('#signup-password').after(
+                    $('<p class="field-error">').text('Please enter a password.')
+                );
+                return;
+            }
+
+            // Password needs at least 6 characters
+            if (password.length < 6) {
+                $('#signup-password').after(
+                    $('<p class="field-error">')
+                        .text('Password must be at least 6 characters.')
+                );
+                return;
+            }
+
+            // Sign-up was successful
+            $form.replaceWith(
+                $('<div class="login-success">').append(
+                    $('<p>').text('Account created! Welcome, ' + username + '!'),
+                    $('<button class="submit modal-close">')
+                        .attr('type', 'button')
+                        .text('Done')
+                )
+            );
+
+            // Close when Done is clicked
+            $('.modal-close').on('click', function() {
+                $('#signup-overlay').remove();
+            });
+        });
+    });
 })
