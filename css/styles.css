@@ -207,69 +207,94 @@ main {
 
 /* home page */
 
+/* home page */
+
 .hero {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 3rem;
-  align-items: center;
-  padding: 2rem 0 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    min-height: 70vh;
+    padding: 3rem 0;
+}
+
+.hero-copy {
+    max-width: 32rem;
 }
 
 .hero-copy h1 {
-  font-size: 2.75rem;
-  max-width: 20ch;
+    font-size: 3.5rem;
+    line-height: 1.05;
+    max-width: 12ch;
+    margin-bottom: 1.25rem;
 }
 
 .hero-copy .subhead {
-  font-size: 1.1rem;
-  color: var(--ink-soft);
-  max-width: 34ch;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 30ch;
+    margin-bottom: 2rem;
 }
 
 .hero-copy .account-links {
-  margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 .hero-copy .account-links p {
-  margin-bottom: 0.25rem;
-  color: var(--ink-soft);
+    margin-bottom: 0.25rem;
+    color: var(--ink-soft);
 }
 
 .hero-copy a.text-link {
-  font-style: italic;
-  text-decoration: underline;
-  font-weight: 600;
+    font-style: italic;
+    text-decoration: underline;
+    font-weight: 600;
 }
 
 .hero-image {
-  aspect-ratio: 4 / 3;
-  background: var(--surface-strong);
-  border-radius: var(--radius-md);
+    aspect-ratio: 4 / 3;
+    background: var(--surface-strong);
+    border-radius: var(--radius-md);
+    overflow: hidden;
 }
 
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* start creating button */
+
 .cta-bar {
-  display: flex;
-  justify-content: flex-end;
-  padding: 1.5rem 0;
-  border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-start;
+    padding: 0;
+    border-top: none;
+    margin-top: 2rem;
+    margin-bottom: 0;
 }
 
 .cta-bar button {
-  background: var(--surface-strong);
-  color: var(--ink);
-  border: none;
-  border-radius: var(--radius-sm);
-  padding: 0.9rem 2rem;
-  font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  font-size: 0.95rem;
+    background: var(--ink);
+    color: var(--bg);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 1rem 2.5rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .cta-bar button:hover,
 .cta-bar button:focus-visible {
-  background: var(--accent);
-  color: var(--accent-ink);
+    background: var(--accent);
+    color: var(--accent-ink);
+    transform: translateY(-2px);
 }
 
 /* list view */
