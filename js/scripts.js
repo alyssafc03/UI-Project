@@ -122,6 +122,66 @@ $(function () {
     }
 
     // <><><> product selection blend summary info updates <><><>
+    var $ingredientGrid = $('.ingredient-grid');
+    var $summary = $('.summary');
+
+    // run when an ingredient checkbox is checked or unchecked
+    $ingredientGrid.on('change', '.card-toggle', function() {
+
+        var $checkbox = $(this);
+        var $card = $checkbox.closest('.card');
+        var ingredient = $checkbox.val();
+
+        // highlight the card when it is selected
+        if ($checkbox.is(':checked')) {
+
+            $card.addClass('is-selected');
+
+            // add ingredient to summary list
+            $summary.find('.selected-ingredients').append(
+                $('<li>').text(ingredient)
+            );
+        } else {
+
+            $card.removeClass('is-selected');
+
+            // remove ingredient from summary list
+            $summary.find('.selected-ingredients li').filter(function() {
+                return $(this).text() === ingredient;
+            }).remove();
+        }
+
+        // count the selected ingredients
+        var count = $summary.find('.selected-ingredients li').length;
+
+        // update the number of products chosen
+        $('#products-chosen').text('0 of ' + count);
+
+
+        // show caffeine information if caffeine was selected
+        if (ingredient === 'Caffeine' && $checkbox.is(':checked')) {
+            $('#caffeine-row').show();
+        }
+        if (ingredient === 'Caffeine' && !$checkbox.is(':checked')) {
+            $('#caffeine-row').hide();
+        }
+
+        // enable/disable the Continue button
+        if (count > 0) {
+            $summary.find('a.submit')
+                .removeClass('is-disabled')
+                .attr('aria-disabled', 'false');
+        } else {
+            $summary.find('a.submit')
+                .addClass('is-disabled')
+                .attr('aria-disabled', 'true');
+        }
+    });
+
+    // stop the Continue button from working when disabled
+    $summary.on('click', 'a.submit.is-disabled', function(event) {
+        event.preventDefault();
+    });
 
 
     // <><><> login/sign-up <><><>
