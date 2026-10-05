@@ -36,42 +36,46 @@
             <div class="create-layout">
                 <div class="ingredient-grid">
                     <div class="card">
-                        <h3>Creatine</h3>
+                        <input class="card-toggle" type="checkbox" id="ing-creatine" name="ingredients" value="Creatine" aria-labelledby="ing-creatine-name">
+                        <h3 id="ing-creatine-name">Creatine</h3>
                         <p>Strength and power</p>
                     </div>
                     <div class="card">
-                        <h3>Caffeine</h3>
+                        <input class="card-toggle" type="checkbox" id="ing-caffeine" name="ingredients" value="Caffeine" aria-labelledby="ing-caffeine-name">
+                        <h3 id="ing-caffeine-name">Caffeine</h3>
                         <p>Energy and mental focus</p>
                     </div>
                     <div class="card">
-                        <h3>Beta-Alanine</h3>
+                        <input class="card-toggle" type="checkbox" id="ing-beta-alanine" name="ingredients" value="Beta-Alanine" aria-labelledby="ing-beta-alanine-name">
+                        <h3 id="ing-beta-alanine-name">Beta-Alanine</h3>
                         <p>Endurance</p>
                     </div>
                     <div class="card">
-                        <h3>L-Citrulline</h3>
+                        <input class="card-toggle" type="checkbox" id="ing-l-citrulline" name="ingredients" value="L-Citrulline" aria-labelledby="ing-l-citrulline-name">
+                        <h3 id="ing-l-citrulline-name">L-Citrulline</h3>
                         <p>Pump and endurance</p>
                     </div>
                     <div class="card">
-                        <h3>L-Theanine</h3>
+                        <input class="card-toggle" type="checkbox" id="ing-l-theanine" name="ingredients" value="L-Theanine" aria-labelledby="ing-l-theanine-name">
+                        <h3 id="ing-l-theanine-name">L-Theanine</h3>
                         <p>Focused energy</p>
                     </div>
                     <div class="card">
-                        <h3>Taurine</h3>
+                        <input class="card-toggle" type="checkbox" id="ing-taurine" name="ingredients" value="Taurine" aria-labelledby="ing-taurine-name">
+                        <h3 id="ing-taurine-name">Taurine</h3>
                         <p>Hydration and muscle function</p>
                     </div>
                 </div>
 
                 <aside class="summary" aria-label="Your blend so far">
                     <h2>Your blend</h2>
-                    <ul class="selected-ingredients">
-                        <li>Caffeine</li>
-                        <li>Creatine</li>
-                        <li>Beta-Alanine</li>
+                    <ul class="selected-ingredients" aria-live="polite">
+                        <li class="empty-note">No ingredients selected</li>
                     </ul>
-                    <p><span>Caffeine</span> <span>200 mg</span></p>
-                    <p><span>Products chosen</span> <span>0 of 2</span></p>
+                    <p id="caffeine-row" hidden><span>Caffeine</span> <span>200 mg</span></p>
+                    <p><span>Products chosen</span> <span id="products-chosen">0 of 0</span></p>
                     <p><span>Total price</span> <span>$0.00</span></p>
-                    <a class="submit" href="create-products.html">Continue</a>
+                    <a class="submit is-disabled" href="create-products.html">Continue</a>
                 </aside>
             </div> <!-- close create-layout -->
             
