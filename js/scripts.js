@@ -121,53 +121,100 @@ $(function () {
         });
     }
 
-    // <><><> product selection blend summary info updates <><><>
+    // <><><> create blend / product selection <><><>
     var $ingredientGrid = $('.ingredient-grid');
     var $summary = $('.summary');
 
-    // run when an ingredient checkbox is checked or unchecked
+    // Save the ingredients selected on the Ingredients page so they can
+    // be used again when the user moves to the Products page.
+    function saveSelectedIngredients() {
+        var selectedIngredients = [];
+
+        $ingredientGrid.find('.card-toggle:checked').each(function() {
+            selectedIngredients.push($(this).val());
+        });
+
+        sessionStorage.setItem(
+            'selectedIngredients',
+            JSON.stringify(selectedIngredients)
+        );
+    }
+
+    // Get the ingredients saved on the Ingredients page.
+    function getSelectedIngredients() {
+        var savedIngredients = sessionStorage.getItem('selectedIngredients');
+
+        if (savedIngredients) {
+            return JSON.parse(savedIngredients);
+        }
+
+        return [];
+    }
+
+    // Update the ingredient list shown in the blend summary.
+    function updateIngredientSummary(ingredients) {
+        var $ingredientList = $summary.find('.selected-ingredients');
+
+        if (!$ingredientList.length) {
+            return;
+        }
+
+        $ingredientList.empty();
+
+        if (ingredients.length === 0) {
+            $ingredientList.append(
+                $('<li class="empty-note">').text('No ingredients selected')
+            );
+            return;
+        }
+
+        $.each(ingredients, function(index, ingredient) {
+            $ingredientList.append(
+                $('<li>').text(ingredient)
+            );
+        });
+    }
+
+    // Run when an ingredient checkbox is checked or unchecked.
+    // Event delegation is used by listening on the ingredient grid and
+    // handling changes from its checkbox elements.
     $ingredientGrid.on('change', '.card-toggle', function() {
 
         var $checkbox = $(this);
         var $card = $checkbox.closest('.card');
         var ingredient = $checkbox.val();
 
-        // highlight the card when it is selected
+        // Highlight the selected card.
         if ($checkbox.is(':checked')) {
-
             $card.addClass('is-selected');
-
-            // add ingredient to summary list
-            $summary.find('.selected-ingredients').append(
-                $('<li>').text(ingredient)
-            );
         } else {
-
             $card.removeClass('is-selected');
-
-            // remove ingredient from summary list
-            $summary.find('.selected-ingredients li').filter(function() {
-                return $(this).text() === ingredient;
-            }).remove();
         }
 
-        // count the selected ingredients
-        var count = $summary.find('.selected-ingredients li').length;
+        // Get all currently selected ingredients.
+        var selectedIngredients = [];
 
-        // update the number of products chosen
-        $('#products-chosen').text('0 of ' + count);
+        $ingredientGrid.find('.card-toggle:checked').each(function() {
+            selectedIngredients.push($(this).val());
+        });
 
+        // Update and save the summary.
+        updateIngredientSummary(selectedIngredients);
+        saveSelectedIngredients();
 
-        // show caffeine information if caffeine was selected
-        if (ingredient === 'Caffeine' && $checkbox.is(':checked')) {
+        // No products have been chosen yet on the next step.
+        $('#products-chosen').text('0 of ' + selectedIngredients.length);
+        $('#total-price').text('$0.00');
+
+        // Show caffeine information when caffeine is selected.
+        if (selectedIngredients.indexOf('Caffeine') !== -1) {
             $('#caffeine-row').show();
-        }
-        if (ingredient === 'Caffeine' && !$checkbox.is(':checked')) {
+        } else {
             $('#caffeine-row').hide();
         }
 
-        // enable/disable the Continue button
-        if (count > 0) {
+        // Enable or disable Continue.
+        if (selectedIngredients.length > 0) {
             $summary.find('a.submit')
                 .removeClass('is-disabled')
                 .attr('aria-disabled', 'false');
@@ -178,11 +225,121 @@ $(function () {
         }
     });
 
-    // stop the Continue button from working when disabled
+    // Stop the Continue button from working when it is disabled.
     $summary.on('click', 'a.submit.is-disabled', function(event) {
         event.preventDefault();
     });
 
+
+    // <><><> product selection on the Products page <><><>
+    // Stores one selected product for each ingredient.
+    var selectedProducts = {};
+
+    // Update the product summary using the ingredients selected on
+    // the previous page and the products selected on this page.
+    function updateProductSummary() {
+        var $productList = $('.selected-ingredients');
+        var selectedIngredients = getSelectedIngredients();
+
+        if (!$productList.length) {
+            return;
+        }
+
+        $productList.empty();
+
+        if (selectedIngredients.length === 0) {
+            $productList.append(
+                $('<li class="empty-note">').text('No ingredients selected')
+            );
+        } else {
+            $.each(selectedIngredients, function(index, ingredient) {
+                var product = selectedProducts[ingredient];
+
+                if (product) {
+                    $productList.append(
+                        $('<li>').text(ingredient + ': ' + product.brand)
+                    );
+                } else {
+                    $productList.append(
+                        $('<li>').text(ingredient + ': No product selected')
+                    );
+                }
+            });
+        }
+
+        var productCount = Object.keys(selectedProducts).length;
+        var ingredientCount = selectedIngredients.length;
+        var totalPrice = 0;
+
+        $.each(selectedProducts, function(ingredient, product) {
+            totalPrice += product.price;
+        });
+
+        $('#products-chosen').text(
+            productCount + ' of ' + ingredientCount
+        );
+
+        $('#total-price').text(
+            '$' + totalPrice.toFixed(2)
+        );
+    }
+
+    // Add/remove products when the user clicks an Add button.
+    // The product grid uses event delegation, and closest() is used
+    // for DOM traversal from the clicked button to its product card.
+    $('.product-grid').on('click', '.add', function() {
+
+        var $button = $(this);
+        var $card = $button.closest('.card');
+        var ingredient = $card.find('h3').first().text().trim();
+        var brand = $card.find('p').eq(0).text().trim();
+        var priceText = $card.find('p').eq(1).text().trim();
+        var price = parseFloat(priceText.replace('$', ''));
+
+        // Clicking an already-selected product removes it.
+        if (selectedProducts[ingredient] &&
+            selectedProducts[ingredient].brand === brand) {
+
+            delete selectedProducts[ingredient];
+            $button.text('Add').removeClass('product-added');
+
+        } else {
+            // Only one product can be selected for each ingredient.
+            $('.product-grid .card').each(function() {
+                var $otherCard = $(this);
+                var otherIngredient = $otherCard.find('h3').first().text().trim();
+
+                if (otherIngredient === ingredient) {
+                    $otherCard.find('.add')
+                        .text('Add')
+                        .removeClass('product-added');
+                }
+            });
+
+            selectedProducts[ingredient] = {
+                brand: brand,
+                price: price
+            };
+
+            $button.text('Added').addClass('product-added');
+        }
+
+        updateProductSummary();
+    });
+
+    // Initialize the Products page from the saved ingredient selections.
+    if ($('.product-grid').length) {
+        var savedIngredients = getSelectedIngredients();
+
+        updateProductSummary();
+
+        // No ingredients means there is nothing to choose products for.
+        if (savedIngredients.length === 0) {
+            $('.summary a.submit')
+                .addClass('is-disabled')
+                .attr('aria-disabled', 'true');
+        }
+    }
 
     // <><><> login/sign-up <><><>
     /* AI used to help generate the below section of code */

@@ -81,13 +81,15 @@
 
                 <aside class="summary" aria-label="Your blend so far">
                     <h2>Your blend</h2>
-                    <ul class="selected-ingredients">
-                        <li>Caffeine</li>
-                        <li>Creatine</li>
+                    <ul class="selected-ingredients" aria-live="polite">
+                        <li class="empty-note">No ingredients selected</li>
                     </ul>
-                    <p><span>Caffeine</span> <span>200 mg</span></p>
-                    <p><span>Products chosen</span> <span>1 of 2</span></p>
-                    <p><span>Total price</span> <span>$18.95</span></p>
+                    <p id="caffeine-row">
+                        <span>Caffeine</span>
+                        <span>200 mg</span>
+                    </p>
+                    <p><span>Products chosen</span> <span id="products-chosen">0 of 0</span></p>
+                    <p><span>Total price</span> <span id="total-price">$0.00</span></p>
                     <a class="submit" href="create-review.html">Continue</a>
                 </aside>
             </div>
